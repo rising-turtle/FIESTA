@@ -8,6 +8,7 @@
 
     <node pkg="rgbd_vio" type="rgbd_vio_node" name="rvio_node" output="log">
         <param name="config_file" type="string" value="$(arg config_file)"/>
+        <param name="depth_interpolate" type="bool" value="true"/>
         <param name="publish_keyframe_depth_image" type="bool" value="true"/>
     </node>
 
@@ -21,12 +22,12 @@
         <param name="reserved_size" value="1000000"/>
 
         <!--Array only-->
-        <param name="lx" value="-20.0"/>
-        <param name="ly" value="-20.0"/>
-        <param name="lz" value="-1.6"/>
-        <param name="rx" value="+20.0"/>
-        <param name="ry" value="+20.0"/>
-        <param name="rz" value="+2"/>
+        <param name="lx" value="-30.0"/> <!-- -20 -->
+        <param name="ly" value="-30.0"/> 
+        <param name="lz" value="-1.6"/> <!-- -1.6 -->
+        <param name="rx" value="+30.0"/> <!-- 20 -->
+        <param name="ry" value="+30.0"/> <!-- 20 -->
+        <param name="rz" value="+7"/> <!-- 2 -->
 
         <!-- raycasting parameters -->
         <param name="min_ray_length" value="0.5"/>
@@ -48,17 +49,17 @@
         <param name="p_occ" value="0.80"/>
 
         <!-- global / local -->
-        <param name="global_map" value="false"/>
-        <param name="global_update" value="false"/>
-        <param name="global_vis" value="false"/>
-        <param name="radius_x" value="3.0"/>
-        <param name="radius_y" value="3.0"/>
-        <param name="radius_z" value="1.5"/>
+        <param name="global_map" value="true"/> 
+        <param name="global_update" value="true"/>
+        <param name="global_vis" value="true"/>
+        <param name="radius_x" value="10.0"/> <!--3-->
+        <param name="radius_y" value="10.0"/> <!--3-->
+        <param name="radius_z" value="4.5"/> <!--1.5-->
 
         <!--depth_filter -->
         <param name="use_depth_filter" value="true"/>
         <param name="depth_filter_tolerance" value="0.1"/>
-        <param name="depth_filter_max_dist" value="4.0"/>
+        <param name="depth_filter_max_dist" value="4.0"/> <!-- 4.0-->
         <param name="depth_filter_min_dist" value="0.1"/>
         <!--unit: pixel-->
         <param name="depth_filter_margin" value="0"/>
@@ -66,10 +67,10 @@
         <!-- visulization -->
         <!--0 for no visulize-->
         <param name="visualize_every_n_updates" value="1"/> 
-        <param name="slice_vis_max_dist" value="2.0"/>
+        <param name="slice_vis_max_dist" value="2.0"/> <!--2.0 -->
         <!-- relative to the lz if array is used, relative to the origin if hash table is used -->
-        <param name="slice_vis_level" value="1.6"/>
-        <param name="vis_lower_bound" value="0"/>
+        <param name="slice_vis_level" value="3.0"/> <!-- 1.6 -->
+         <param name="vis_lower_bound" value="0"/>
         <param name="vis_upper_bound" value="+10"/>
 
         <!-- subsribe source -->
